@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width" initial_scale=1.0>
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <script src="https://kit.fontawesome.com/f850029d2f.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div id="container">
+            <div id="head">
+                <div class="first">
+                    <h2>sneakers</h2>
+                </div>
+                <div class="second">
+                    <ul class="line-change">
+                        <li><a href="#Collections">Collections</a></li>
+                        <li><a href="#Men">Men</a></li>
+                        <li><a href="#Women">Women</a></li>
+                        <li><a href="#About">About</a></li>
+                        <li><a href="#Contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="third">
+                    <div class="addtion-cart">
+                        <div class="cou">0</div>
+                        <i class="fa-solid fa-cart-shopping" class="whole-cart" id="cart-icon"></i>
+                        <div class="car" id="cr">
+                            <div class="cart-top">
+                            <h5 class="cart-title">Cart</h5>
+                            <div class="xmark"><i class="fa-solid fa-xmark" id="close-cart"></i></div>
+                            </div>
+                            <div class="lin"></div>
+                            
+                        </div>
+                        <script type="text/javascript">
+                            let cartIcon = document.querySelector("#cart-icon");
+                            let car=document.querySelector(".car");
+                            let closeCart=document.querySelector("#close-cart");
+                            
+                            cartIcon.onclick=()=>{
+                                car.classList.add("active");
+                            };
+                            closeCart.onclick=()=>{
+                                car.classList.remove("active");
+                            };
+                            function removeItems(event){
+                                var result=confirm("Are you sure you want to delete the items?");
+                                if(result==true){
+                                    var       existing=event.target.parentNode.parentNode.parentNode;
+                                    existing.remove();
+                                    cou.innerText=0;
+                                    alert("Your items are deleted");
+                                    dis=false;
+                                    return true;
+                                }
+                                else{
+                                    return false;
+                                }
+                            }
+                            function orderItems(event){
+                                var result=confirm("Are you sure you want to place the order?");
+                                if(result==true){
+                                    var exists=event.target.parentNode.parentNode;
+                                    console.log(exists);
+                                    exists.remove();
+                                    cou.innerText=0;
+                                    alert("Your order is placed");
+                                    dis=false;
+                                    return true;
+                                }
+                                else{
+                                    return false;
+                                }
+                            }
+                        </script>
+                    </div>
+                    <img src="images/image-avatar.png" width="50px" height="50px" id="hover-profile">
+                </div>
+               <div class="line">
+               </div>
+            </div>
+            <div id="center">
+                <div class="left">
+                    <div class="main-img">
+                        <img src="images/image-product-1.jpg" width="150px" height="150px">
+                    </div>
+                    <ul class="thumb">
+                        <li><a href="images/image-product-1-thumbnail.jpg"><img src="images/image-product-1-thumbnail.jpg"></a></li>
+                        <li><a href="images/image-product-2-thumbnail.jpg"><img src="images/image-product-2-thumbnail.jpg"></a></li>
+                        <li><a href="images/image-product-3-thumbnail.jpg"><img src="images/image-product-3-thumbnail.jpg"></a></li>
+                        <li><a href="images/image-product-4-thumbnail.jpg"><img src="images/image-product-4-thumbnail.jpg"></a></li>
+                    </ul>
+                    <div class="popup">
+                        <span class="close">&times;</span>
+                        <img src="images/image-product-1.jpg" class="ind">
+                        <button class="previous" onclick="prev()"><i class="fa-solid fa-less-than"></i></button>
+                        <button class="next" onclick="nextf()"><i class="fa-solid fa-greater-than"></i></button>
+                    </div>
+                    <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+                    <script type="text/javascript"> $(document).ready(function(){
+                       $('.thumb a').click(function(e){
+                         e.preventDefault();
+                         $('.main-img img').attr("src", $(this).attr("href"))
+                        })
+                    })
+                       document.querySelectorAll('.main-img img').forEach(image =>{
+                           image.onclick = () =>{
+                               document.querySelector('.popup').style.display = 'block';
+                               document.querySelector('.popup img').src = image.getAttribute('src'); 
+                           }
+                       });
+                       document.querySelector('.popup .close').onclick = () =>{
+                           document.querySelector('.popup').style.display = 'none';
+                       }
+                   </script>
+                    <script type="text/javascript">
+                        let img=document.querySelector('.ind');
+                        let arr=['image-product-1.jpg','image-product-2.jpg','image-product-3.jpg','image-product-4.jpg'];
+                        let i=0;
+
+                        function prev(){
+                          if(i<=0) i=arr.length;
+                          i--;
+                          return setImg();
+                        }
+
+                        function nextf(){
+                          if(i>=arr.length-1) i=-1;
+                          i++;
+                          return setImg();
+                        }
+                        function setImg(){
+                          return img.setAttribute('src', 'images/'+arr[i]);
+                        }
+                    </script>
+                </div>
+                <div class="right">
+                    <div class="right-text">
+                        <div class="company">
+                            <h3>SNEAKER COMPANY</h3>
+                        </div>
+                        <div class="heading">
+                            <h1>Fall Limited Edition Sneakers</h1>
+                        </div>
+                        <div class="paragraph">
+                            <span>These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they'll withstand everything the weather can offer.<br><br></span>
+                        </div>
+                        <div class="money">
+                            <div class="cost"><span><i class="fa-solid fa-dollar-sign"></i></span>125.00</div>
+                            <div class="discount-per">50%</div>
+                        </div>
+                        <div class="discount">
+                            <span><del><span><i class="fa-solid fa-dollar-sign"></i></span>250.00</del><br><br></span>
+                        </div>
+                        <div class="cart-bar">
+                            <div class="count">
+                                <div class="decrease">-</div>
+                                <div class="value">0</div>
+                                <div class="increase">+</div>
+                                <script type="text/javascript">
+                                    const decrease= document.querySelector('.decrease'), increase=document.querySelector('.increase'), value=document.querySelector('.value');
+                                    let a=0;
+                                    let dis = false;
+                                    increase.addEventListener("click",()=>{
+                                        a++;
+                                        value.innerText=a;
+                                    });
+                                    decrease.addEventListener("click",()=>{
+                                        if(a>0)
+                                        {
+                                            a--;
+                                        }
+                                        value.innerText=a;
+                                    });
+                                    
+                                </script>
+                            </div>
+                            <div class="cart">
+                                <button id="add-ani" class="product"><span><i class="fa-solid fa-cart-shopping"></i>Add to cart</span></button>
+                                <script type="text/javascript">
+                                    const cou=document.querySelector('.cou');
+                                    document.querySelector('.product').addEventListener('click',event =>{
+                                        
+                                            
+                                        if(dis == false){
+                                            
+                                            const t=document.getElementById("cr");
+                                            var cart_content=`
+                            <div class="remove-checkout" id="re">
+                            
+                            <div class="cart-content">
+                                <div class="cart-box">
+                                    <img src="images/image-product-1-thumbnail.jpg" width="50px" height="50px">
+                                </div>
+                                <div class="details">
+                                    <div class="product-title">Fall Limited Edition Sneakers</div>
+                                    <div class="cart-price">
+                                        <div>$125.00</div>
+                                        <div>x</div>
+                                        <div class="v">0</div>
+                                        <div class="price">0</div>
+                                    </div>
+                                </div>
+                                <div onclick="removeItems(event)">
+                                <i class="fa-solid fa-trash cart-remove" ></i></div>
+                            </div>
+                             <div onclick="orderItems(event)"><button class="btn-buy" >Order</button></div>
+                            </div>`
+                                            t.insertAdjacentHTML('beforeend',cart_content);
+                                            dis=true;
+                                        }
+                                        
+                                        const v=document.querySelector('.v');
+                                        const price=document.querySelector('.price');
+                                           cou.innerHTML=(a+parseInt(cou.innerText));
+                                            v.innerHTML=cou.innerText;
+                                            price.innerHTML='$'+(cou.innerText*125).toFixed(2);
+                                    })
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
